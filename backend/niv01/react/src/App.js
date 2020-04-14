@@ -8,7 +8,7 @@ import api from './services/api'
 
 
 function App () {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState([]);8
 
   useEffect(() => {
       api.get('projects').then(res => {
