@@ -9,10 +9,10 @@ import {
 @Entity('appointments')
 class Appointment {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id: 'uuid';
 
   @Column()
-  provider: string;
+  provider_id: 'uuid';
 
   @Column('timestamp with time zone')
   date: Date;

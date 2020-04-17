@@ -1,6 +1,11 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import {
+  MigrationInterface,
+  QueryRunner,
+  Table,
+  TableForeignKey,
+} from 'typeorm';
 
-export default class CreateAppointment1587081238665
+export default class CreateAppointment1587087073302
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
@@ -9,14 +14,14 @@ export default class CreateAppointment1587081238665
         columns: [
           {
             name: 'id',
-            type: 'varchar',
+            type: 'uuid',
             isPrimary: true,
             generationStrategy: 'uuid',
           },
           {
-            name: 'provider',
-            type: 'varchar',
-            isNullable: false,
+            name: 'provider_id',
+            type: 'uuid',
+            isNullable: true,
           },
           {
             name: 'date',
@@ -36,6 +41,14 @@ export default class CreateAppointment1587081238665
         ],
       })
     );
+
+    const foreignKey = new TableForeignKey({
+      columnNames: ['provider_id'],
+      referencedColumnNames: ['id'],
+      referencedTableName: 'users',
+    });
+
+    await queryRunner.createForeignKey('appointments', foreignKey);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {

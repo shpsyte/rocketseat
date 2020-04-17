@@ -1,10 +1,12 @@
 import Router from 'express';
 import { parseISO } from 'date-fns';
-import { getCustomRepository } from 'typeorm';
+import { getCustomRepository, RelationCount } from 'typeorm';
 import AppointmentRepository from '../repositories/AppoitmentsRepository';
 import CreateAppointmentService from '../services/CreateAppointmentServices';
 
 const appointmentsRouter = Router();
+
+const routes = Router();
 
 appointmentsRouter.get('/', (req, res) => {
   const appointmentRepository = getCustomRepository(AppointmentRepository);
