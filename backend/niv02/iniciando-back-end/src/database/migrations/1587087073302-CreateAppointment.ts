@@ -17,6 +17,7 @@ export default class CreateAppointment1587087073302
             type: 'uuid',
             isPrimary: true,
             generationStrategy: 'uuid',
+            default: 'uuid_generate_v4 ()',
           },
           {
             name: 'provider_id',
