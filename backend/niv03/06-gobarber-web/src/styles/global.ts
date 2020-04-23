@@ -8,6 +8,7 @@ export default createGlobalStyle`
     outline: 0;
   }
 
+
   body {
     background: #312E38;
     color: #fff;
@@ -29,5 +30,6 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
+
 
 `;
