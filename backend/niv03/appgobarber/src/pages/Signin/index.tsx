@@ -14,6 +14,7 @@ import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 import { useNavigation } from '@react-navigation/native';
 import api from '../../services/api';
+import { useAuth } from '../../hooks/auth';
 
 import getValidationErrors from '../../utils/getValidationsErrors';
 import {
@@ -29,7 +30,7 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 
 interface SigInFormData {
-  name: string;
+  email: string;
   password: string;
 }
 
@@ -37,38 +38,45 @@ const SignIn: React.FC = () => {
   const navitagtion = useNavigation();
   const formRef = useRef<FormHandles>(null);
   const inputPasswordRef = useRef<TextInput>(null);
+  const { sigIn, user } = useAuth();
 
-  const handleSignIn = useCallback(async (data: SigInFormData) => {
-    try {
-      formRef.current?.setErrors({});
-      const schema = Yup.object().shape({
-        email: Yup.string()
-          .required('Email é obrigatorio')
-          .email('Email invalido'),
-        password: Yup.string().required('Senha obrigatorio'),
-      });
+  const handleSignIn = useCallback(
+    async (data: SigInFormData) => {
+      try {
+        formRef.current?.setErrors({});
+        const schema = Yup.object().shape({
+          email: Yup.string()
+            .required('Email é obrigatorio')
+            .email('Email invalido'),
+          password: Yup.string().required('Senha obrigatorio'),
+        });
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
+        await schema.validate(data, {
+          abortEarly: false,
+        });
 
-      // await sigIn({
-      //   email: data.email,
-      //   password: data.password,
-      // });
+        await sigIn({
+          email: data.email,
+          password: data.password,
+        });
 
-      // history.push('/dashboard');
-    } catch (err) {
-      if (err instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(err);
-        formRef.current?.setErrors(errors);
+        // history.push('/dashboard');
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
+          formRef.current?.setErrors(errors);
 
-        return;
+          return;
+        }
+
+        Alert.alert(
+          'Erro na autenticacao',
+          'Ocorreu um erro ao fazer login.. ',
+        );
       }
-
-      Alert.alert('Erro na autenticacao', 'Ocorreu um erro ao fazer login.. ');
-    }
-  }, []);
+    },
+    [sigIn],
+  );
   return (
     <>
       <KeyboardAvoidingView
