@@ -30,7 +30,7 @@ interface Issue {
   };
 }
 
-interface HaerProps extends ReactComponent {
+interface HaerProps extends React.Component {
   title?: string;
 }
 
@@ -38,7 +38,7 @@ const Repository: React.FC<HaerProps> = ({ children }) => {
   const [repository, setRepository] = useState<Repository | null>(null);
   const [issues, setIssues] = useState<Issue[]>([]);
   const { params } = useRouteMatch<RepositoryParams>();
-  const sfsda = children;
+
   useEffect(() => {
     api.get(`repos/${params.repository}`).then((res) => {
       setRepository(res.data);
