@@ -5,13 +5,17 @@ import CreateAppointmentServices from './CreateAppointmentServices';
 //   expect(1 + 2).toBe(3);
 // });
 
+let fakeAppointmentsRepository: FakeAppointmentsRepository;
+let createAppointmentServices: CreateAppointmentServices;
 describe('CreateAppointment', () => {
-  it('should be able to create a new appointment', async () => {
-    const fakeAppointmentsRepository = new FakeAppointmentsRepository();
-    const createAppointmentServices = new CreateAppointmentServices(
+  beforeEach(() => {
+    fakeAppointmentsRepository = new FakeAppointmentsRepository();
+    createAppointmentServices = new CreateAppointmentServices(
       fakeAppointmentsRepository
     );
+  });
 
+  it('should be able to create a new appointment', async () => {
     const appointment = await createAppointmentServices.execute({
       date: new Date(),
       provider_id: '123',
@@ -22,11 +26,6 @@ describe('CreateAppointment', () => {
   });
 
   it('should not be able to create a new appointment on the same time', async () => {
-    const fakeAppointmentsRepository = new FakeAppointmentsRepository();
-    const createAppointmentServices = new CreateAppointmentServices(
-      fakeAppointmentsRepository
-    );
-
     const appointmentdate = new Date(2020, 4, 10, 11);
 
     await createAppointmentServices.execute({
