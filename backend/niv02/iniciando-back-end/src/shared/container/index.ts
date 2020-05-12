@@ -5,8 +5,8 @@ import AppointmentsRepository from '@modules/appointmets/infra/typeorm/repositor
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import UsersRepository from '@modules/users/infra/typeorm/repositories/UserRepository';
 
-// import IUserTokenRepository from '@modules/users/repositories/IUserTokensRepository';
-// import UserTokenRepository from '@modules/users/infra/typeorm/repositories/';
+import IUserTokenRepository from '@modules/users/repositories/IUserTokensRepository';
+import UserTokenRepository from '@modules/users/infra/typeorm/repositories/UserTokenRepository';
 
 import '@modules/users/providers';
 import './providers';
@@ -19,4 +19,9 @@ container.registerSingleton<IAppointmentsRepository>(
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
   UsersRepository
+);
+
+container.registerSingleton<IUserTokenRepository>(
+  'UsersTokenRepository',
+  UserTokenRepository
 );
