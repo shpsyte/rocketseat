@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for users/services/UpdateUserAvatar.ts</title>
+    <title>Code coverage report for appointmets/services/ListService.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">users/services</a> UpdateUserAvatar.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">appointmets/services</a> ListService.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/22</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/17</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
@@ -102,7 +102,29 @@
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
 <a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -117,81 +139,74 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import path from 'path';
-import fs from 'fs';
-import User from '@modules/users/infra/typeorm/entities/User';
-import uploadConfig from '@config/upload';
-<span class="cstat-no" title="statement not covered" >import AppError from '@shared/errors/AppError';</span>
-import IUsersRepository from '@modules/users/repositories/IUsersRepository';
-<span class="cstat-no" title="statement not covered" >import { injectable, inject } from 'tsyringe';</span>
-import IStorageProvider from '@shared/container/providers/StorageProviders/models/IStorageProvider';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { injectable } from 'tsyringe';</span>
+// import User from '@modules/users/infra/typeorm/entities/User';
+// import IAppointmentsRepository from '@modules/appointmets/repositories/IAppontmentsRepository';
 &nbsp;
 interface IRequest {
-  user_id: string;
-  avatarFileName: string;
+  provider_id: string;
+  month: number;
+  year: number;
 }
 &nbsp;
+// type IResponse = Array&lt;{
+//   day: number;
+//   available: boolean;
+// }&gt;;
+&nbsp;
 @injectable()
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >class <span class="cstat-no" title="statement not covered" >U</span></span>pdateUserAvatar {</span>
-<span class="fstat-no" title="function not covered" >  constructor(</span>
-    @inject('UsersRepository')
-    private <span class="cstat-no" title="statement not covered" >userRepository: IUsersRepository,</span>
-&nbsp;
-    @inject('StorageProvider')
-    private <span class="cstat-no" title="statement not covered" >storageProvider: IStorageProvider</span>
-  ) {}
-&nbsp;
-<span class="fstat-no" title="function not covered" >  public async <span class="cstat-no" title="statement not covered" >e</span>xecute({ <span class="cstat-no" title="statement not covered" >user_id,</span> <span class="cstat-no" title="statement not covered" >avatarFileName </span>}: IRequest): Promise&lt;User&gt; {</span>
-    const <span class="cstat-no" title="statement not covered" >user = <span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >await this.userRepository.findById(user_id);</span></span></span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    if (!user) {</span>
-<span class="cstat-no" title="statement not covered" >      throw new AppError('Only auth user can change avatar', 401);</span>
-    }
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    if (user.avatar) {</span>
-<span class="cstat-no" title="statement not covered" >      this.storageProvider.deleteFile(user.avatar);</span>
-    }
-&nbsp;
-    const <span class="cstat-no" title="statement not covered" >fileName = <span class="cstat-no" title="statement not covered" >await this.storageProvider.saveFile(avatarFileName);</span></span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    user.avatar = fileName;</span>
-<span class="cstat-no" title="statement not covered" >    await this.userRepository.save(user);</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    return user;</span>
-  }
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >class <span class="cstat-no" title="statement not covered" >L</span></span>istService {</span>
+  // constructor() {} // private appontmentsRepository: IAppointmentsRepository // @inject('AppointmentsRepository')
+  // public async execute({ provider_id, year, month }: IRequest): Promise&lt;void&gt; {
+  //   // return [{ day: 1, available: false }];
+  // }
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export default UpdateUserAvatar;</span>
+<span class="cstat-no" title="statement not covered" >export default ListService;</span>
+&nbsp;
+// import { injectable, inject } from 'tsyringe';
+&nbsp;
+// @injectable()
+// class ListProviderMonthAvailabilityService {
+//   constructor() {} // private appontmentsRepository: IAppointmentsRepository // @inject('AppointmentsRepository')
+&nbsp;
+//   public async execute({
+//     provider_id,
+//     year,
+//     month,
+//   }: IRequest): Promise&lt;IResponse&gt; {
+//     // const appointments = await this.appontmentsRepository.findAllInMonthFromProvider(
+//     //   {
+//     //     provider_id,
+//     //     year,
+//     //     month,
+//     //   }
+//     // );
+&nbsp;
+//     // console.log(appointments);
+//     return [{ day: 1, available: false }];
+//   }
+// }
+&nbsp;
+// export default ListProviderMonthAvailabilityService;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -199,7 +214,7 @@ interface IRequest {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed May 13 2020 17:26:45 GMT-0700 (Pacific Daylight Time)
+                at Wed May 13 2020 17:12:47 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
