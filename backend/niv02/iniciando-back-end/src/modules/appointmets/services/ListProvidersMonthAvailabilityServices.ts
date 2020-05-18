@@ -3,6 +3,7 @@ import 'reflect-metadata';
 // import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import { injectable, inject } from 'tsyringe';
 import IAppointmentsRepository from '@modules/appointmets/repositories/IAppontmentsRepository';
+import { getDaysInMonth, getDate } from 'date-fns';
 
 interface IRequest {
   provider_id: string;
@@ -34,9 +35,24 @@ class ListProvidersMonthAvailabilityServices {
       }
     );
 
-    console.log(appointments);
+    const numberOfDayinMonth = getDaysInMonth(new Date(year, month - 1));
+    const eahDayArray = Array.from(
+      { length: numberOfDayinMonth },
+      (_, index) => index + 1
+    );
 
-    return [{ day: 1, available: false }];
+    const availability = eahDayArray.map(day => {
+      const appointmentInDay = appointments.filter(a => {
+        return getDate(a.date) === day;
+      });
+
+      return {
+        day,
+        available: appointmentInDay.length < 10,
+      };
+    });
+
+    return availability;
   }
 }
 
