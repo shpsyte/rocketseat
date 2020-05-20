@@ -1,17 +1,18 @@
 import FakeAppointmentsRepository from '@modules/appointmets/repositories/fakes/FakeAppointmentsRepository';
 import AppError from '@shared/errors/AppError';
+import FakeNotificationRepository from '@modules/notifications/repositories/fakes/FakeNotificationRepository';
 import CreateAppointmentServices from './CreateAppointmentServices';
-// test('sum two numbers', () => {
-//   expect(1 + 2).toBe(3);
-// });
 
 let fakeAppointmentsRepository: FakeAppointmentsRepository;
 let createAppointmentServices: CreateAppointmentServices;
+let fakeNotificationRepository: FakeNotificationRepository;
 describe('CreateAppointment', () => {
   beforeEach(() => {
     fakeAppointmentsRepository = new FakeAppointmentsRepository();
+    fakeNotificationRepository = new FakeNotificationRepository();
     createAppointmentServices = new CreateAppointmentServices(
-      fakeAppointmentsRepository
+      fakeAppointmentsRepository,
+      fakeNotificationRepository
     );
   });
 

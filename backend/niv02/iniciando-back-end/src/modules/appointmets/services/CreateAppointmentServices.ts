@@ -1,8 +1,9 @@
-import { startOfHour, isBefore, getHours } from 'date-fns';
+import { startOfHour, isBefore, getHours, format } from 'date-fns';
 import AppError from '@shared/errors/AppError';
 import Appointment from '@modules/appointmets/infra/typeorm/entities/Appointment';
 import IAppointmentRepository from '@modules/appointmets/repositories/IAppontmentsRepository';
 import { injectable, inject } from 'tsyringe';
+import INotificationsRepository from '@modules/notifications/repositories/INotificationsRepository';
 
 interface IRequest {
   provider_id: string;
@@ -14,7 +15,10 @@ interface IRequest {
 class CreateAppointmentServices {
   constructor(
     @inject('AppointmentsRepository')
-    private appointmentsRepository: IAppointmentRepository
+    private appointmentsRepository: IAppointmentRepository,
+
+    @inject('NotificationsRepository')
+    private notificationsRepository: INotificationsRepository
   ) {}
 
   public async execute({
@@ -32,13 +36,13 @@ class CreateAppointmentServices {
       throw new AppError('You cannot make an appointment with yourself');
     }
 
-    // const checkIfExists = await this.appointmentsRepository.finByDate(
-    //   appointmentDate
-    // );
+    const checkIfExists = await this.appointmentsRepository.finByDate(
+      appointmentDate
+    );
 
-    // if (checkIfExists) {
-    //   throw new AppError('This appointment is already booked');
-    // }
+    if (checkIfExists) {
+      throw new AppError('This appointment is already booked');
+    }
 
     if (getHours(appointmentDate) < 8 || getHours(appointmentDate) > 17) {
       throw new AppError(
@@ -50,6 +54,13 @@ class CreateAppointmentServices {
       provider_id,
       user_id,
       date: appointmentDate,
+    });
+
+    const dateFormated = format(appointmentDate, "dd/MM/yyyy 'às' HH:mm'h'");
+
+    await this.notificationsRepository.create({
+      recipient_id: provider_id,
+      content: `Novo agendamento para dia ${dateFormated} `,
     });
 
     return appointment;
