@@ -14,7 +14,7 @@ describe('CheckDayAvailability', () => {
     );
   });
 
-  it('should be able to list the month availability  ', async () => {
+  it('should be able to list the day availability  ', async () => {
     await fakeAppointmentsRepository.create({
       provider_id: 'user',
       user_id: 'user',
@@ -38,9 +38,9 @@ describe('CheckDayAvailability', () => {
     expect(availability).toEqual(
       expect.arrayContaining([
         { hour: 8, available: false },
-        { hour: 9, available: true },
+        { hour: 9, available: false },
         { hour: 10, available: false },
-        { hour: 11, available: true },
+        { hour: 11, available: false },
       ])
     );
   });

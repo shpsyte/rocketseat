@@ -2,6 +2,7 @@ import User from '@modules/users/infra/typeorm/entities/User';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import { injectable, inject } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
+import ICacheprovider from '@shared/container/providers/CacheProvider/models/ICacheprovider';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 
 interface IRequest {
@@ -15,7 +16,10 @@ class CreateUserServices {
   constructor(
     @inject('UsersRepository') private userRepository: IUsersRepository,
 
-    @inject('HashProvider') private hashProvider: IHashProvider
+    @inject('HashProvider') private hashProvider: IHashProvider,
+
+    @inject('CacheProvider')
+    private cacheProvider: ICacheprovider
   ) {}
 
   public async execute({ name, email, password }: IRequest): Promise<User> {
@@ -32,6 +36,8 @@ class CreateUserServices {
       email,
       password: hashedPassord,
     });
+
+    await this.cacheProvider.invalidatePrefix('provider-list');
 
     return user;
   }
