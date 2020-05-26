@@ -42,7 +42,8 @@ class CreateAppointmentServices {
     }
 
     const checkIfExists = await this.appointmentsRepository.finByDate(
-      appointmentDate
+      appointmentDate,
+      provider_id
     );
 
     if (checkIfExists) {

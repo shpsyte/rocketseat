@@ -27,9 +27,12 @@ class AppointmentRepository implements IAppontmentsRepository {
     return appointmet;
   }
 
-  public async finByDate(date: Date): Promise<Appointment | undefined> {
+  public async finByDate(
+    date: Date,
+    provider_id: string
+  ): Promise<Appointment | undefined> {
     const findAppointment = await this.ormRepository.findOne({
-      where: { date },
+      where: { date, provider_id },
     });
 
     return findAppointment;
@@ -69,6 +72,7 @@ class AppointmentRepository implements IAppontmentsRepository {
             `to_char(${dateFieldName},'DD-MM-YYYY') = '${parseDay}-${parseMonth}-${year}'`
         ),
       },
+      relations: ['user'],
     });
     return appoitment;
   }
