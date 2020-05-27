@@ -8,11 +8,17 @@ interface SigInCredentials {
 
 interface AuthState {
   token: string;
-  user: object;
+  user: User;
+}
+
+interface User {
+  id: string;
+  name: string;
+  avatar_url: string;
 }
 
 interface AuthContextData {
-  user: object;
+  user: User;
   sigIn(credentials: SigInCredentials): Promise<void>;
   sigOut(): void;
 }
@@ -22,7 +28,7 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 const AuthProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem('@GoBarber:token');
-    const user = localStorage.getItem('@GoBarber:token');
+    const user = localStorage.getItem('@GoBarber:user');
 
     if (token && user) {
       return { token, user: JSON.parse(user) };

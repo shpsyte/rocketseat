@@ -74,6 +74,7 @@ const SigIn: React.FC = () => {
               icon={FiMail}
               name="email"
               type="text"
+              value="jose@jose.com"
               placeholder="E-mail"
             />
 
@@ -81,6 +82,7 @@ const SigIn: React.FC = () => {
               name="password"
               icon={FiLock}
               type="password"
+              value="1234"
               placeholder="Senha"
             />
 
