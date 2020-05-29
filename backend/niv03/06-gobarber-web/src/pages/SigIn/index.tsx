@@ -82,7 +82,7 @@ const SigIn: React.FC = () => {
               name="password"
               icon={FiLock}
               type="password"
-              value="1234"
+              value="123456"
               placeholder="Senha"
             />
 
