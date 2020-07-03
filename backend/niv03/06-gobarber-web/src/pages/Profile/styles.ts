@@ -88,7 +88,7 @@ export const AvatarInput = styled.div`
     right: 0;
     bottom: 0;
     border: 0;
-    transition: backgroud 0.2s;
+    transition: background 0.2s;
 
     display: flex;
     align-items: center;
