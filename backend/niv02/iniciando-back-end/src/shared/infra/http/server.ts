@@ -37,5 +37,5 @@ app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
 });
 
 app.listen(3333, () => {
-  console.log('Server started on port 3333');
+  console.log(' 🕵️‍  Server started on port 3333...');
 });
